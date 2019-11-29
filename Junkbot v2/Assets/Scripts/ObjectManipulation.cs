@@ -105,7 +105,7 @@ public class ObjectManipulation : MonoBehaviour
             {
                 camScript.mouseSensitivity = initSensitivity;
                 camScript.enableCameraMovement = true;
-                rotatedObject.gameObject.GetComponent<BoxCollider>().enabled = false;
+                rotatedObject.gameObject.GetComponent<Collider>().enabled = false;
                 rotatedObject = null;
                 rotateDown = false;
             }
@@ -138,7 +138,7 @@ public class ObjectManipulation : MonoBehaviour
         rotatedObject = selected;
         camScript.mouseSensitivity = 0;
         camScript.enableCameraMovement = false;
-        selected.gameObject.GetComponent<BoxCollider>().enabled = false;
+        selected.gameObject.GetComponent<Collider>().enabled = false;
 
         ///Code adapted from Raigex on the Unity forums
         ///https://answers.unity.com/questions/299126/how-to-rotate-relative-to-camera-angleposition.html
@@ -169,7 +169,7 @@ public class ObjectManipulation : MonoBehaviour
         selected.gameObject.layer = 9;
         camScript.mouseSensitivity = initSensitivity;
         camScript.enableCameraMovement = true;
-        selected.gameObject.GetComponent<BoxCollider>().enabled = true;
+        selected.gameObject.GetComponent<Collider>().enabled = true;
         selected.useGravity = true;
         selected.freezeRotation = false;
         selected.isKinematic = false;

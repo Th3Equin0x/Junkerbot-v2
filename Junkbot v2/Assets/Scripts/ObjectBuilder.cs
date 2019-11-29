@@ -19,10 +19,16 @@ public class ObjectBuilder : MonoBehaviour
             Vector3 origObjPos = this.transform.position;
             Quaternion origObjRot = this.transform.rotation;
 
-            resultObject.SetActive(true);
-            resultObject.transform.position = origObjPos;
+            this.gameObject.layer = 12;
+            collision.gameObject.layer = 12;
+            resultObject.layer = 12;
+
+            resultObject.transform.position = origObjPos + new Vector3 (0, 0.1f, 0);
             resultObject.transform.rotation = origObjRot;
-            
+
+            resultObject.SetActive(true);
+
+            resultObject.layer = 9;
 
             Destroy(otherObject);
             Destroy(this.gameObject);

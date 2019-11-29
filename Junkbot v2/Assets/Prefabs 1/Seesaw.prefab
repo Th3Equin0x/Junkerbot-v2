@@ -85,12 +85,12 @@ PrefabInstance:
     - target: {fileID: 7534043650609390452, guid: b6b45930499128d4c85a68165e77e531,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.18592547
       objectReference: {fileID: 0}
     - target: {fileID: 7534043650609390452, guid: b6b45930499128d4c85a68165e77e531,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.98256385
       objectReference: {fileID: 0}
     - target: {fileID: 7534043650609390452, guid: b6b45930499128d4c85a68165e77e531,
         type: 3}
@@ -110,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 7534043650609390452, guid: b6b45930499128d4c85a68165e77e531,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -21.43
       objectReference: {fileID: 0}
     - target: {fileID: 6629817722288834675, guid: b6b45930499128d4c85a68165e77e531,
         type: 3}
@@ -127,6 +127,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 932102618295384846, guid: b6b45930499128d4c85a68165e77e531,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca8f1628faafc35429439b2934fc2892, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6b45930499128d4c85a68165e77e531, type: 3}
 --- !u!4 &5828378613227367252 stripped
@@ -706,7 +711,7 @@ PrefabInstance:
     - target: {fileID: 8060686949099945711, guid: 69cab6556b071bb4e971c84d7677595b,
         type: 3}
       propertyPath: m_EnableCollision
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8060686949099945711, guid: 69cab6556b071bb4e971c84d7677595b,
         type: 3}
@@ -738,6 +743,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1072560032243902840, guid: 69cab6556b071bb4e971c84d7677595b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca8f1628faafc35429439b2934fc2892, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69cab6556b071bb4e971c84d7677595b, type: 3}
 --- !u!4 &3136309611448845559 stripped

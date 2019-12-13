@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class MoveableObject : MonoBehaviour
 {
+    private Vector3 HJRelativeRespawnPos;
+    private Vector3 HJRelativeRespawnRot;
+
+    [SerializeField]
     private Vector3 resetPos;
-    private Quaternion resetRot;
+
+    [SerializeField]
+    private Vector3 resetRot;
 
     private void Start()
     {
         this.tag = "moveable";
         resetPos = this.transform.position;
-        resetRot = this.transform.rotation;
-    }
+        resetRot = this.transform.eulerAngles;
 
-    private void Update()
-    {   //this could be repaced by the inclusion of trigger boundaries above and below the level.
-        if (gameObject.transform.position.y < -20 || gameObject.transform.position.y > -2)
-            ObjectRespawn();
+        if (GetComponent<HingeJoint>())
+        {
+            HJRelativeRespawnPos = this.transform.position - this.gameObject.GetComponent<HingeJoint>().connectedBody.transform.position;
+            HJRelativeRespawnPos = this.transform.eulerAngles - this.gameObject.GetComponent<HingeJoint>().connectedBody.transform.eulerAngles;
+        }
     }
 
     public void ObjectRespawn()
@@ -25,11 +31,22 @@ public class MoveableObject : MonoBehaviour
         this.gameObject.layer = 9;                              //changes object back to "object" in case it's still "selected".
         this.GetComponent<Rigidbody>().velocity = Vector3.zero; //removes velocity/force from the object
         this.transform.position = resetPos;                   //returns object to its initial position
-        this.transform.rotation = resetRot;                   //returns object ro its initial
+        this.transform.eulerAngles = resetRot;                   //returns object ro its initial
+
+        if (GetComponent<HingeJoint>())
+        {
+            this.gameObject.GetComponent<HingeJoint>().connectedBody.transform.position = this.transform.position - HJRelativeRespawnPos;
+            this.gameObject.GetComponent<HingeJoint>().connectedBody.transform.eulerAngles = this.transform.eulerAngles - HJRelativeRespawnPos;
+        }
     }
 
-    public void SetRespawn(Vector3 pos, Quaternion rot)
+    public void SetRespawn(Vector3 pos, Vector3 rot)
     {
+        if (this.gameObject.GetComponent<Rigidbody>())
+        {
+            this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+
         resetPos = pos;
         resetRot = rot;
     }
@@ -37,7 +54,7 @@ public class MoveableObject : MonoBehaviour
     public Vector3 GetRespawnPos()
     { return resetPos; }
 
-    public Quaternion GetRespawnRot()
+    public Vector3 GetRespawnRot()
     { return resetRot; }
 
 }

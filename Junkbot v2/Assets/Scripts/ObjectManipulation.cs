@@ -87,6 +87,11 @@ public class ObjectManipulation : MonoBehaviour
                 holdDistance = hit.distance;
                 //hit.rigidbody.position = Vector3.Lerp(hit.transform.position, holdPosition, Time.deltaTime * 15);
 
+                if (hit.rigidbody.gameObject.GetComponent<HingeJoint>())
+                {
+                    hit.rigidbody.gameObject.GetComponent<HingeJoint>().connectedBody.gameObject.layer = 11;
+                }
+
                 selected = hit.rigidbody;
             }
         }
@@ -120,11 +125,11 @@ public class ObjectManipulation : MonoBehaviour
 
         if (Input.mouseScrollDelta.magnitude != 0)
         {
-            if (Input.mouseScrollDelta.y > 0 && holdDistance <= 3.5f)
+            if (Input.mouseScrollDelta.y > 0 && holdDistance <= maxGrabRange)
             {
                 holdDistance += Input.mouseScrollDelta.y * 0.1f;
             }
-            else if (Input.mouseScrollDelta.y < 0 && holdDistance >= 2f)
+            else if (Input.mouseScrollDelta.y < 0 && holdDistance >= 1.5f)
             {
                 holdDistance += Input.mouseScrollDelta.y * 0.1f;
             }
@@ -174,6 +179,11 @@ public class ObjectManipulation : MonoBehaviour
         selected.freezeRotation = false;
         selected.isKinematic = false;
         holdDistance = 3f;
+
+        if (selected.GetComponent<HingeJoint>())
+        {
+            selected.GetComponent<HingeJoint>().connectedBody.gameObject.layer = 9;
+        }
 
         selected = null;
     }

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - moveable
+  - RespawnTrigger
+  - CheckpointMarker
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - Player
   - Moveable Object
   - Level
-  - Selected Objet
+  - Selected Object
   - BuildObject
-  - 
+  - PlayerWall
   - 
   - 
   - 

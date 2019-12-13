@@ -8,6 +8,15 @@ public class ObjectBuilder : MonoBehaviour
     public GameObject resultObject;
     public AudioClip ObjectBuiltsfx;
 
+    public Vector3 prebuiltToPos;
+    public Vector3 prebuiltToRot;
+
+    public Vector3 otherToPos;
+    public Vector3 otherToRot;
+
+    public Vector3 resultRespawnPos;
+    public Vector3 resultRespawnRot;
+
     void OnCollisionEnter(Collision collision)
     {
         //Check for a match with the specified name on any GameObject that collides with your GameObject
@@ -23,15 +32,21 @@ public class ObjectBuilder : MonoBehaviour
             collision.gameObject.layer = 12;
             resultObject.layer = 12;
 
+            otherObject.transform.position = otherToPos;
+            otherObject.transform.eulerAngles = otherToRot;
+
+            transform.position = prebuiltToPos;
+            transform.eulerAngles = prebuiltToPos;
+
             resultObject.transform.position = origObjPos + new Vector3 (0, 0.1f, 0);
             resultObject.transform.rotation = origObjRot;
 
             resultObject.SetActive(true);
-
+            resultObject.GetComponent<MoveableObject>().SetRespawn(resultRespawnPos, resultRespawnRot);
             resultObject.layer = 9;
 
-            Destroy(otherObject);
-            Destroy(this.gameObject);
+            otherObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 
